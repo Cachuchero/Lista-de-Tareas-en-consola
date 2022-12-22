@@ -1,23 +1,23 @@
-require("colors");
-const { mostrarmenu, pausa } = require("./helpers/mensajes");
-
-console.clear();    
-
-
-const main = async () => { 
-    console.log('hola mundo');
-   
-    let opt = '';
-    do{
-        opt = await mostrarmenu();
-        console.log({opt});
-        if(opt !== 0)
-        await pausa();
-
-    }while(  opt !== '0' );
-   
-    //pausa();
+import colors from 'colors';
+import { inquirerMenu, pausa } from './helpers/inquirer.js';
+import { Tarea } from './models/tarea.js';
+import { v4 as uuidv4 } from 'uuid';
+uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+ 
+console.clear();
+ 
+const main = async () => {
+  let opt = '';
+  do {
+   //  opt = await inquirerMenu();
+   //  console.log({ opt });
+    const tarea = new Tarea ('Comprar comida');
+    console.log(tarea);
+    
 
 
-}
+    await pausa();
+  } while (opt !== '');
+};
+ 
 main();
