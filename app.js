@@ -1,6 +1,5 @@
 require("colors");
-const { CLIENT_RENEG_LIMIT } = require("tls");
-const { mostrarmenu, pausa } = require("./mensajes");
+const { mostrarmenu, pausa } = require("./helpers/mensajes");
 
 console.clear();    
 
@@ -11,18 +10,13 @@ const main = async () => {
     let opt = '';
     do{
         opt = await mostrarmenu();
-        console.log({pausa});
-        
-        opt = pausa();
+        console.log({opt});
+        if(opt !== 0)
+        await pausa();
 
-
-
-    }while(
-        opt !== '0'
-
-    );
+    }while(  opt !== '0' );
    
-    pausa();
+    //pausa();
 
 
 }
